@@ -1,5 +1,6 @@
 package edu.mu.pizza;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.mu.cooking.ICookingStrategy;
@@ -16,9 +17,9 @@ public abstract class AbstractPizza {
 	protected double cookingPrice;
 	
 	//constructor that will instantiate the toppingList
-	public AbstractPizza(List<Toppings> toppingList) {
+	public AbstractPizza() {
 		super();
-		this.toppingList = toppingList;
+		toppingList = new ArrayList<Toppings>();
 	}
 	
 	//getters and setter methods for all instance variables
