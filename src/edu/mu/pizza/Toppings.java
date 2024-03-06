@@ -1,4 +1,4 @@
-package edu.mu.fakespeare;
+package edu.mu.pizza;
 
 public enum Toppings {
 	TOMATO(1.50),

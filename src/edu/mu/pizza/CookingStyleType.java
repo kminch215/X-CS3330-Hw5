@@ -1,4 +1,4 @@
-package edu.mu.fakespeare;
+package edu.mu.pizza;
 
 public enum CookingStyleType {
 	MICROWAVE,
