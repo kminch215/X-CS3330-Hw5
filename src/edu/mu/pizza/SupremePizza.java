@@ -1,20 +1,13 @@
 package edu.mu.pizza;
 
-import java.util.List;
-
-import edu.mu.cooking.ICookingStrategy;
-
 public class SupremePizza extends AbstractPizza{
 
-	//parameterized constructor
-	public SupremePizza(List<Toppings> toppingList, double priceWithoutToppings, double totalPrice, int pizzaOrderID, ICookingStrategy cookingStrategy, double cookingPrice) {
-		super(toppingList);
-		super.priceWithoutToppings = priceWithoutToppings;    //is this hard coded for each of the pizzas???
-		super.totalPrice = totalPrice;
-		super.pizzaOrderID = pizzaOrderID;
-		super.cookingStrategy = cookingStrategy;
-		super.cookingPrice = cookingPrice;
-		orderIDCount++;                                      //increase when a new pizza is made
+	//constructor
+	public SupremePizza() {
+		super();
+		super.priceWithoutToppings = 3.50;    		//is this hard coded for each of the pizzas???
+		orderIDCount++;                       		//increase when a new pizza is made
+		super.pizzaOrderID = orderIDCount;
 		
 		toppingList.add(Toppings.TOMATO);
 		toppingList.add(Toppings.CHEESE);
@@ -28,7 +21,12 @@ public class SupremePizza extends AbstractPizza{
 	
 	//copy constructor
 	public SupremePizza(SupremePizza pizza) {
-		this(pizza.toppingList, pizza.priceWithoutToppings, pizza.totalPrice, pizza.pizzaOrderID, pizza.cookingStrategy, pizza.cookingPrice);
+		this.toppingList =  pizza.toppingList;
+		this.priceWithoutToppings = pizza.priceWithoutToppings;
+		this.totalPrice = pizza.totalPrice;
+		this.pizzaOrderID = pizza.pizzaOrderID;
+		this.cookingStrategy = pizza.cookingStrategy;
+		this.cookingPrice = pizza.cookingPrice;
 	}
 
 	@Override
