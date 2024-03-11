@@ -44,14 +44,14 @@ public class PizzaOrder {
 				return pizza;
 			}
 		}
-		AbstractPizza nullPizza = new PizzaCookingFactory().createPizza(null);
+		AbstractPizza nullPizza = pizzaFactory.createPizza(null);
 		return nullPizza;
 	}
 	
 	/* This method creates a new pizza with the given PizzaType and
 	 *  adds it to the pizzaOrderList */
 	public boolean addPizzaToCart(PizzaType pizzaType) {
-		AbstractPizza pizza = new PizzaCookingFactory().createPizza(pizzaType);
+		AbstractPizza pizza = pizzaFactory.createPizza(pizzaType);
 		pizzaOrderList.add(pizza);
 		return true;
 	}
@@ -62,7 +62,9 @@ public class PizzaOrder {
 	 * and returns true. If the topping already exists in the topping list of the 
 	 * pizza, it returns false */
 	public boolean addNewToppingToPizza(int orderID, Toppings topping) {
-		return false;
+		AbstractPizza pizza = getPizzaByOrderID(orderID);
+		pizza.getToppingList().add(topping);
+		return true;
 	}
 	
 	/* This method finds the pizza order with the given ID and removes 
