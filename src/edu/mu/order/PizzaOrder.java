@@ -23,19 +23,37 @@ public class PizzaOrder {
 	
 	/* This method gets the pizza order with the given pizza order 
 	 * ID and prints the toppings of that order */
-	public void printListOfToppingsByPizzaOrderID(int orderID) {}
+	public void printListOfToppingsByPizzaOrderID(int orderID) {
+		for(AbstractPizza pizza : pizzaOrderList) {
+			if(pizza.getPizzaOrderID() == orderID) {
+				System.out.println("Toppings on Pizza " + orderID + ": " + pizza.getToppingList().toString());
+			}
+		}
+	}
 	
 	/* This method prints the pizzas in the pizzaOrderList */
-	public void printPizzaOrderCart(int orderID) {}
+	public void printPizzaOrderCart(int orderID) {
+		
+	}
 	
 	/* This method finds the pizza order with the given pizza 
 	 * order id and returns it. */
-	public AbstractPizza getPizzaByOrderID(int orderID) {}
+	public AbstractPizza getPizzaByOrderID(int orderID) {
+		for(AbstractPizza pizza : pizzaOrderList) {
+			if(pizza.getPizzaOrderID() == orderID) {
+				return pizza;
+			}
+		}
+		AbstractPizza nullPizza = new PizzaCookingFactory().createPizza(null);
+		return nullPizza;
+	}
 	
 	/* This method creates a new pizza with the given PizzaType and
 	 *  adds it to the pizzaOrderList */
 	public boolean addPizzaToCart(PizzaType pizzaType) {
-		return false;
+		AbstractPizza pizza = new PizzaCookingFactory().createPizza(pizzaType);
+		pizzaOrderList.add(pizza);
+		return true;
 	}
 	
 	/* This method finds the pizza order with the given ID and adds 
@@ -69,7 +87,9 @@ public class PizzaOrder {
 	 * However, if there is at least one uncooked pizza it throws an exception (Use 
 	 * the general Exception class). The checkout method calls the isThereAnyUncookedPizza 
 	 * method to check for uncooked pizzas and throws an exception */
-	public double checkout() throws Exception {}
+	public double checkout() throws Exception {
+		return 0.0;
+		}
 	
 	/* This method gets the pizza with the given order ID, instantiates the cookingStrategy 
 	 * according to the cookingStrategyType parameter. Calls the cook function for the 
