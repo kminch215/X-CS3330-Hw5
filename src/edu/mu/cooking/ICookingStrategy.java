@@ -1,11 +1,11 @@
-package edu.mu.fakespeare;
+package edu.mu.cooking;
 
-import edu.mu.fakespeare.AbstractPizza;
-import edu.mu.fakespeare.HawaiianPizza;
-import edu.mu.fakespeare.MargheritaPizza;
-import edu.mu.fakespeare.PizzaType;
-import edu.mu.fakespeare.SupremePizza;
-import edu.mu.fakespeare.VegetarianPizza;
+import edu.mu.pizza.AbstractPizza;
+import edu.mu.pizza.HawaiianPizza;
+import edu.mu.pizza.MargheritaPizza;
+import edu.mu.pizza.PizzaType;
+import edu.mu.pizza.SupremePizza;
+import edu.mu.pizza.VegetarianPizza;
 
 public interface ICookingStrategy {
 
