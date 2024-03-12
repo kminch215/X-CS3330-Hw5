@@ -105,12 +105,16 @@ public class PizzaOrder {
 		}
 	
 	public double checkout() throws Exception {
-		return 0.0;
+    		if (isThereAnyUncookedPizza()) {
+        		throw new Exception("There are uncooked pizzas in the order.");
+    		}
+
+    		double totalPrice = 0.0;
+    		for (AbstractPizza pizza : pizzaOrderList) {
+        		totalPrice += pizza.getTotalPrice();
+    		}
+    		return totalPrice;
 		}
-	
-	/* This method gets the pizza with the given order ID, instantiates the cookingStrategy 
-	 * according to the cookingStrategyType parameter. Calls the cook function for the 
-	 * pizza of the pizza order with the given order ID */
 	
 	public boolean selectCookingStrategyByPizzaOrderID(int orderID, CookingStyleType cookingStrategyType) {
 		return false;
