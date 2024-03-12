@@ -95,20 +95,14 @@ public class PizzaOrder {
     		return false;
 		}
 	
-	/* This method checks the pizzas in the pizzaOrderList and checks their 
-	 * cooking strategies. It returns true if there are any pizzas without any 
-	 * assigned pizza cooking strategy. It returns false if there are no pizzas 
-	 * without an assigned cooking strategy */
-	
 	public boolean isThereAnyUncookedPizza() {
-		return false;
-	}
-	
-	/* This method checks if there are any uncooked pizzas. If all pizzas are cooked, 
-	 * it calculates the total price of all pizzas and returns the total cart price. 
-	 * However, if there is at least one uncooked pizza it throws an exception (Use 
-	 * the general Exception class). The checkout method calls the isThereAnyUncookedPizza 
-	 * method to check for uncooked pizzas and throws an exception */
+    		for (AbstractPizza pizza : pizzaOrderList) {
+        		if (pizza.getCookingStrategy() == null) {
+            		return true;
+        		}
+    		}
+    		return false;
+		}
 	
 	public double checkout() throws Exception {
 		return 0.0;
