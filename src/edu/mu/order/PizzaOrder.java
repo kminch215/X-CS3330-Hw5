@@ -117,7 +117,26 @@ public class PizzaOrder {
 		}
 	
 	public boolean selectCookingStrategyByPizzaOrderID(int orderID, CookingStyleType cookingStrategyType) {
-		return false;
+    		AbstractPizza pizza = getPizzaByOrderID(orderID);
+    		if (pizza != null) {
+        		ICookingStrategy cookingStrategy = null;
+        		switch (cookingStrategyType) {
+            		case MICROWAVE:
+                		cookingStrategy = new ICookingStrategy.MicrowaveCookingStrategy();
+                		break;
+            		case CONVENTIONAL_OVEN:
+                		cookingStrategy = new ICookingStrategy.ConventionalOvenCookingStrategy();
+                		break;
+            		case BRICK_OVEN:
+                		cookingStrategy = new ICookingStrategy.BrickOvenCookingStrategy();
+                		break;
+        		}
+        		if (cookingStrategy != null) {
+            		pizza.setCookingStrategy(cookingStrategy);
+            		pizza.getCookingStrategy().cook(pizza);
+            		return true;
+        		}
+    		}
+    		return false;
+		}
 	}
-	
-}
