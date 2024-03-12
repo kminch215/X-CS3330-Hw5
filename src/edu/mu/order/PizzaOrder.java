@@ -28,7 +28,7 @@ public class PizzaOrder {
 	public void printListOfToppingsByPizzaOrderID(int orderID) {
 		for(AbstractPizza pizza : pizzaOrderList) {
 			if(pizza.getPizzaOrderID() == orderID) {
-				System.out.println("Toppings on Pizza " + orderID + ": " + pizza.getToppingList().toString());
+				System.out.println("Toppings on Pizza " + orderID + ": " + pizza.getToppingList());
 			}
 		}
 	}
@@ -51,8 +51,7 @@ public class PizzaOrder {
 				return pizza;
 			}
 		}
-		AbstractPizza nullPizza = pizzaFactory.createPizza(null);
-		return nullPizza;
+		return null;
 	}
 	
 	/* This method creates a new pizza with the given PizzaType and
@@ -60,8 +59,12 @@ public class PizzaOrder {
 	
 	public boolean addPizzaToCart(PizzaType pizzaType) {
 		AbstractPizza pizza = pizzaFactory.createPizza(pizzaType);
-		pizzaOrderList.add(pizza);
-		return true;
+		if(pizza != null) {
+			pizzaOrderList.add(pizza);
+			return true;
+		}
+		else return false;
+		
 	}
 	
 	/* This method finds the pizza order with the given ID and adds 
