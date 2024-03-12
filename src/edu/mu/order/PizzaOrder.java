@@ -16,6 +16,7 @@ public class PizzaOrder {
 	private List<AbstractPizza> pizzaOrderList;
 	
 	//constructor
+	
 	public PizzaOrder() {
 		pizzaFactory = new PizzaCookingFactory();
 		pizzaOrderList = new ArrayList<AbstractPizza>();
@@ -23,6 +24,7 @@ public class PizzaOrder {
 	
 	/* This method gets the pizza order with the given pizza order 
 	 * ID and prints the toppings of that order */
+	
 	public void printListOfToppingsByPizzaOrderID(int orderID) {
 		for(AbstractPizza pizza : pizzaOrderList) {
 			if(pizza.getPizzaOrderID() == orderID) {
@@ -32,6 +34,7 @@ public class PizzaOrder {
 	}
 	
 	/* This method prints the pizzas in the pizzaOrderList */
+	
 	public void printPizzaOrderCart(int orderID) {
 		System.out.println("Pizzas in Order Cart: ");
 		for(AbstractPizza pizza : pizzaOrderList) {
@@ -41,6 +44,7 @@ public class PizzaOrder {
 	
 	/* This method finds the pizza order with the given pizza 
 	 * order id and returns it. */
+	
 	public AbstractPizza getPizzaByOrderID(int orderID) {
 		for(AbstractPizza pizza : pizzaOrderList) {
 			if(pizza.getPizzaOrderID() == orderID) {
@@ -53,6 +57,7 @@ public class PizzaOrder {
 	
 	/* This method creates a new pizza with the given PizzaType and
 	 *  adds it to the pizzaOrderList */
+	
 	public boolean addPizzaToCart(PizzaType pizzaType) {
 		AbstractPizza pizza = pizzaFactory.createPizza(pizzaType);
 		pizzaOrderList.add(pizza);
@@ -64,6 +69,7 @@ public class PizzaOrder {
 	 * the list. If the given topping is added, it also updates the pizza price 
 	 * and returns true. If the topping already exists in the topping list of the 
 	 * pizza, it returns false */
+	
 	public boolean addNewToppingToPizza(int orderID, Toppings topping) {
 		AbstractPizza pizza = getPizzaByOrderID(orderID);
 		pizza.getToppingList().add(topping);
@@ -75,14 +81,25 @@ public class PizzaOrder {
 	 * given topping is removed, it also updates the pizza price and returns true. 
 	 * If the topping doesn’t exist in the topping list of the pizza and cannot be 
 	 * removed, it returns false */
+	
 	public boolean removeToppingFromPizza(int orderID, Toppings topping) {
-			return false;
+    		AbstractPizza pizza = getPizzaByOrderID(orderID);
+    		if (pizza != null) {
+        		List<Toppings> toppingsList = pizza.getToppingList();
+        		if (toppingsList.contains(topping)) {
+            		toppingsList.remove(topping);
+            		pizza.setTotalPrice(pizza.updatePizzaPrice());
+            		return true;
+        		}
+    		}
+    		return false;
 		}
 	
 	/* This method checks the pizzas in the pizzaOrderList and checks their 
 	 * cooking strategies. It returns true if there are any pizzas without any 
 	 * assigned pizza cooking strategy. It returns false if there are no pizzas 
 	 * without an assigned cooking strategy */
+	
 	public boolean isThereAnyUncookedPizza() {
 		return false;
 	}
@@ -92,6 +109,7 @@ public class PizzaOrder {
 	 * However, if there is at least one uncooked pizza it throws an exception (Use 
 	 * the general Exception class). The checkout method calls the isThereAnyUncookedPizza 
 	 * method to check for uncooked pizzas and throws an exception */
+	
 	public double checkout() throws Exception {
 		return 0.0;
 		}
@@ -99,6 +117,7 @@ public class PizzaOrder {
 	/* This method gets the pizza with the given order ID, instantiates the cookingStrategy 
 	 * according to the cookingStrategyType parameter. Calls the cook function for the 
 	 * pizza of the pizza order with the given order ID */
+	
 	public boolean selectCookingStrategyByPizzaOrderID(int orderID, CookingStyleType cookingStrategyType) {
 		return false;
 	}
