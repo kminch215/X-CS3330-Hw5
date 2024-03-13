@@ -10,5 +10,10 @@ public class BrickOvenCookingStrategy implements ICookingStrategy {
 		pizza.setTotalPrice(pizza.getTotalPrice() + pizza.getCookingPrice());
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "BrickOvenCookingStrategy";
+	}
 		
 }
