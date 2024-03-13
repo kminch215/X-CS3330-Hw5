@@ -3,7 +3,10 @@ package edu.mu.order;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.mu.cooking.BrickOvenCookingStrategy;
+import edu.mu.cooking.ConventionalOvenCookingStrategy;
 import edu.mu.cooking.ICookingStrategy;
+import edu.mu.cooking.MicrowaveCookingStrategy;
 import edu.mu.pizza.AbstractPizza;
 import edu.mu.pizza.CookingStyleType;
 import edu.mu.pizza.PizzaType;
@@ -122,23 +125,21 @@ public class PizzaOrder {
 	public boolean selectCookingStrategyByPizzaOrderID(int orderID, CookingStyleType cookingStrategyType) {
     		AbstractPizza pizza = getPizzaByOrderID(orderID);
     		if (pizza != null) {
-        		ICookingStrategy cookingStrategy = null;
         		switch (cookingStrategyType) {
             		case MICROWAVE:
-                		cookingStrategy = new ICookingStrategy.MicrowaveCookingStrategy();
+            			cookingStrategy = new BrickOvenCookingStrategy();
                 		break;
             		case CONVENTIONAL_OVEN:
-                		cookingStrategy = new ICookingStrategy.ConventionalOvenCookingStrategy();
+            			cookingStrategy = new ConventionalOvenCookingStrategy();
                 		break;
             		case BRICK_OVEN:
-                		cookingStrategy = new ICookingStrategy.BrickOvenCookingStrategy();
+            			cookingStrategy = new BrickOvenCookingStrategy();
                 		break;
         		}
-        		if (cookingStrategy != null) {
-            		pizza.setCookingStrategy(cookingStrategy);
-            		pizza.getCookingStrategy().cook(pizza);
-            		return true;
-        		}
+        		
+        		pizza.setCookingStrategy(cookingStrategy);
+        		pizza.getCookingStrategy().cook(pizza);
+        		return true;
     		}
     		return false;
 		}
