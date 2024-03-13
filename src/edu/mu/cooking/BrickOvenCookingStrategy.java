@@ -6,8 +6,8 @@ public class BrickOvenCookingStrategy implements ICookingStrategy {
 
 	@Override
 	public boolean cook(AbstractPizza pizza) {
-		pizza.cookingPrice = 10;
-		pizza.totalPrice += pizza.cookingPrice;
+		pizza.setCookingPrice(10);
+		pizza.setTotalPrice(pizza.getTotalPrice() + pizza.getCookingPrice());
 		return true;
 	}
 		
