@@ -79,6 +79,7 @@ public class PizzaOrder {
 	public boolean addNewToppingToPizza(int orderID, Toppings topping) {
 		AbstractPizza pizza = getPizzaByOrderID(orderID);
 		pizza.getToppingList().add(topping);
+		pizza.setTotalPrice(pizza.updatePizzaPrice());
 		return true;
 	}
 	
@@ -101,6 +102,10 @@ public class PizzaOrder {
     		return false;
 		}
 	
+	/* This method checks the pizzas in the pizzaOrderList and checks their 
+	 * cooking strategies. It returns true if there are any pizzas without any 
+	 * assigned pizza cooking strategy. It returns false if there are no pizzas 
+	 * without an assigned cooking strategy */
 	public boolean isThereAnyUncookedPizza() {
     		for (AbstractPizza pizza : pizzaOrderList) {
         		if (pizza.getCookingStrategy() == null) {
@@ -110,6 +115,11 @@ public class PizzaOrder {
     		return false;
 		}
 	
+	/* This method checks if there are any uncooked pizzas. If all pizzas are cooked, 
+	 * it calculates the total price of all pizzas and returns the total cart price. 
+	 * However, if there is at least one uncooked pizza it throws an exception (Use 
+	 * the general Exception class). The checkout method calls the isThereAnyUncookedPizza 
+	 * method to check for uncooked pizzas and throws an exception */
 	public double checkout() throws Exception {
     		if (isThereAnyUncookedPizza()) {
         		throw new Exception("There are uncooked pizzas in the order.");
@@ -122,6 +132,9 @@ public class PizzaOrder {
     		return totalPrice;
 		}
 	
+	/* This method gets the pizza with the given order ID, instantiates the cookingStrategy 
+	 * according to the cookingStrategyType parameter. Calls the cook function for the 
+	 * pizza of the pizza order with the given order ID */
 	public boolean selectCookingStrategyByPizzaOrderID(int orderID, CookingStyleType cookingStrategyType) {
     		AbstractPizza pizza = getPizzaByOrderID(orderID);
     		if (pizza != null) {
