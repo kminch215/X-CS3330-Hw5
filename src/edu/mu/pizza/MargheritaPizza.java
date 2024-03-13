@@ -1,5 +1,7 @@
 package edu.mu.pizza;
 
+import edu.mu.cooking.ICookingStrategy;
+
 public class MargheritaPizza extends AbstractPizza {
 
 	//constructor
@@ -43,12 +45,7 @@ public class MargheritaPizza extends AbstractPizza {
 	public String toString() {
 		return "MargheritaPizza [toppingList=" + toppingList + ", priceWithoutToppings=" + priceWithoutToppings
 				+ ", totalPrice=" + totalPrice + ", pizzaOrderID=" + pizzaOrderID + ", cookingStrategy="
-				+ cookingStrategy + ", cookingPrice=" + cookingPrice + ", updatePizzaPrice()=" + updatePizzaPrice()
-				+ ", getToppingList()=" + getToppingList() + ", getPriceWithoutToppings()=" + getPriceWithoutToppings()
-				+ ", getTotalPrice()=" + getTotalPrice() + ", getPizzaOrderID()=" + getPizzaOrderID()
-				+ ", getCookingStrategy()=" + getCookingStrategy() + ", getCookingPrice()=" + getCookingPrice()
-				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
+				+ cookingStrategy + ", cookingPrice=" + cookingPrice + "]";
 	}
 	
 	
