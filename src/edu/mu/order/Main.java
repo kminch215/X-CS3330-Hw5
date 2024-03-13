@@ -71,7 +71,8 @@ public class Main {
 		
 		System.out.println();
 		try {
-			pizza.checkout();
+			double total = pizza.checkout();
+			System.out.println("Total Price: $" + total);
 		} catch (Exception e) {
 			System.out.println("A pizza in the order is uncooked.");
 		}
