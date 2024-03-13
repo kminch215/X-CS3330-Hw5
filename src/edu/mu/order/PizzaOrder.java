@@ -127,7 +127,7 @@ public class PizzaOrder {
     		if (pizza != null) {
         		switch (cookingStrategyType) {
             		case MICROWAVE:
-            			cookingStrategy = new BrickOvenCookingStrategy();
+            			cookingStrategy = new MicrowaveCookingStrategy();
                 		break;
             		case CONVENTIONAL_OVEN:
             			cookingStrategy = new ConventionalOvenCookingStrategy();
